@@ -1,0 +1,35 @@
+export const options = [
+  {
+    icon:"user",
+    pathname:"personalized"
+  },
+  {
+    icon:"twitter",
+    pathname:"trends"
+  },
+  {
+    icon:"chart-area",
+    pathname:"business"
+  },
+  {
+    icon:"film",
+    pathname:"entertainment"
+  },
+  {
+    icon:"medkit",
+    pathname:"health"
+  },
+   
+  {
+    icon:"atom",
+    pathname:"science"
+  },
+  {
+    icon:"basketball-ball",
+    pathname:"sports"
+  },
+  {
+    icon:"mobile-alt",
+    pathname:"technology"
+  }
+]
