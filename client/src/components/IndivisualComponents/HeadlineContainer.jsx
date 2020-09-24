@@ -39,9 +39,12 @@ export default function HeadlineContainer(props){
       async function getData(){
         setLoading(true);
         const data = await fetch(props.url);
+        const status =  data.status;
+        console.log("status-Code:",status);
         const news = await data.json();
         setarticles(news);
         setLoading(false);
+        if(status===200)
         sessionStorage.setItem(props.url, JSON.stringify(news));
       }
       getData();
@@ -50,7 +53,7 @@ export default function HeadlineContainer(props){
 
   return <div>
           <div className="headline-container">
-            {loading ? <p style={{color:"var(--article-text-color)"}}>loading Headlines...</p> :(article.length ?article.map(createBox) : <p style={{color:"var(--article-text-color)"}}>Nothing found, try searching something else</p>)}
+            {loading ? <p style={{color:"var(--article-text-color)"}}>loading Headlines...</p> :(article.length ? article.map(createBox) : <p style={{color:"var(--article-text-color)"}}>Nothing found, try searching something else</p>)}
         </div>
         <Article index={index} content={article[index]} />
      </div>

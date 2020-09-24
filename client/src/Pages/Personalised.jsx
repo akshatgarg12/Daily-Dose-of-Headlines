@@ -18,18 +18,26 @@ const PersonalisedPage = () => {
     localStorage.setItem('interests', JSON.stringify(interests));
   },[interests]);
 
+// string validations
+  function isEmpty(str) {
+    return (!str || 0 === str.length);
+  }
+  function isBlank(str) {
+    return (!str || /^\s*$/.test(str));
+  }
 // functions for handling the inputs
   function submitHandler(e){
     e.preventDefault();
-    if(interests.length < 3){
-    setInterests(prev => {
-      return [...prev, input];
-    })
-  }else{
-    alert('You can only add 3 fields')
+    if(!isBlank(input) && !isEmpty(input)){
+      if(interests.length < 3){
+      setInterests(prev => {
+        return [...prev, input];
+      })
+    }else{
+      alert('You can only add 3 fields')
+    }
+      setInput('');
   }
-    console.log(interests);
-    setInput('');
   }
   function removeInterest(interest){
     let newInterest = interests.filter((i)=>(i !== interest));
@@ -60,7 +68,7 @@ const PersonalisedPage = () => {
           let temp = e.target.value;
           setInput(temp);
         }}></input>
-        <button type="submit" className="search-box-button" onClick={submitHandler}><i className="fas fa-search"></i></button>
+        <button type="submit" className="search-box-button" onClick={submitHandler}><i className="fas fa-plus"></i></button>
       </div>
       
       <div className="interest-container">

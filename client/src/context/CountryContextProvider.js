@@ -5,10 +5,15 @@ const CountryContextProvider = (props) => {
   async function getUserLocation(){
     let locationData = await fetch('https://ipapi.co/json/');
     let data = await locationData.json();
-    console.log(data); 
+    console.log(data.country); 
     return data.country;
   }
-  const [country, setCountry] = useState(sessionStorage.getItem('country'));
+  // using session storage so it doesnt get back to the user location on every refresh.
+
+  // fix: had to add a placeholder country here.. earlier it was sessionStorage.getItem('country') which was returning null;
+
+  const [country, setCountry] = useState(sessionStorage.getItem('country')||'IN');
+
   function ChangeCountry(countryValue){
     sessionStorage.setItem('country', countryValue);
     setCountry(countryValue);
