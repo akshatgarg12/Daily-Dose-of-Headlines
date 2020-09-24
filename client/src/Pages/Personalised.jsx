@@ -9,7 +9,8 @@ const PersonalisedPage = () => {
   
 // basic functions to get and set the data from localStorage
   useEffect(()=>{
-    const getItem = JSON.parse(localStorage.getItem('interests')) || [];
+    const getItem = JSON.parse(localStorage.getItem('interests'));
+    if(getItem)
     setInterests(getItem);
   },[])
 
