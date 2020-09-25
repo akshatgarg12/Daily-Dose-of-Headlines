@@ -3,6 +3,7 @@ import {lightTheme, darkTheme} from '../Data/themeData';
 
 const ThemeContextProvider = (props) => {
   const [isLight, setTheme] = useState(localStorage.getItem('isLight'));
+  
   useEffect(()=>{
     if(localStorage.getItem('isLight')===undefined){
       setTheme(false);
